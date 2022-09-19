@@ -30,6 +30,10 @@ TestCommentParsingProcessor::TestCommentParsingProcessor()
   registerProcessorParameter("onlyComment",
                              "A parameter where we test only comments",
                              m_onlyComment, defaultEmpty);
+
+  registerProcessorParameter(
+      "explicitValue", "A parameter that we pass in via an explicit value",
+      m_explicitValue, defaultEmpty);
 }
 
 std::ostream &operator<<(std::ostream &os, std::vector<std::string> stringVec) {
@@ -46,17 +50,19 @@ std::ostream &operator<<(std::ostream &os, std::vector<std::string> stringVec) {
 
 void TestCommentParsingProcessor::init() {
   streamlog_out(MESSAGE) << "Got the following number of elements (leading | "
-                            "trailing | mixed | no | only): "
+                            "trailing | mixed | no | only | explicit): "
                          << m_leadingComment.size() << " | "
                          << m_trailingComment.size() << " | "
                          << m_mixedComment.size() << " | " << m_noComment.size()
-                         << " | " << m_onlyComment.size() << std::endl;
+                         << " | " << m_onlyComment.size() << " | "
+                         << m_explicitValue.size() << std::endl;
 
   // This output makes for an easier to grep output from CTest
-  streamlog_out(MESSAGE) << "GREPPABLE OUTPUT " << m_leadingComment.size()
+  streamlog_out(MESSAGE) << "PARSED COMMENT VALUES " << m_leadingComment.size()
                          << ", " << m_trailingComment.size() << ", "
                          << m_mixedComment.size() << ", " << m_noComment.size()
-                         << ", " << m_onlyComment.size() << std::endl;
+                         << ", " << m_onlyComment.size() << ", "
+                         << m_explicitValue.size() << std::endl;
 
   streamlog_out(DEBUG) << "The leading comment parameter contents are: "
                        << m_leadingComment << std::endl;
@@ -72,4 +78,7 @@ void TestCommentParsingProcessor::init() {
 
   streamlog_out(DEBUG) << "The only comment parameter contents are: "
                        << m_onlyComment << std::endl;
+
+  streamlog_out(DEBUG) << "The explicit value parameter contents are: "
+                       << m_explicitValue << std::endl;
 }

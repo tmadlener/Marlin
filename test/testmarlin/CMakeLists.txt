@@ -75,4 +75,4 @@ ADD_TEST( t_parse_steering_comments "${CMAKE_COMMAND}" -P parse_steering_comment
 
 # The numbers are determined from simply counting the elements in the
 # parse_steering_comments.xml steering file
-SET_TESTS_PROPERTIES( t_parse_steering_comments PROPERTIES PASS_REGULAR_EXPRESSION "GREPPABLE OUTPUT 7, 2, 11, 9, 0")
+SET_TESTS_PROPERTIES( t_parse_steering_comments PROPERTIES PASS_REGULAR_EXPRESSION "PARSED COMMENT VALUES 7, 2, 11, 9, 0, 4")
